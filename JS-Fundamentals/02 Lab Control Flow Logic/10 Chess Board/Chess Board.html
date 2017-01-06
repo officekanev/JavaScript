@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chess Board</title>
+    <script src="10 Chess Board.js"></script>
+    <style>
+
+        body {
+            background-color: #eee;
+        }
+
+        div,span {
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+        .chessboard {
+            display: inline-block;
+
+            background-color: #eee;
+        }
+        .white {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            border: 0;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+
+        .black {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            border: 0;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        let html = chessBoard([4]);
+        document.body.innerHTML = html;
+    </script>
+</body>
+</html>
