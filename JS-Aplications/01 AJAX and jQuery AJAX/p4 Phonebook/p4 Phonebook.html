@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phonebook</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div id="text">
+        <p1>Phonebook</p1>
+        <button id="btnLoad">Load</button>
+        <ul id="phonebook"></ul> //  here we paste extract phone numbers
+        <h1>Create new Contact</h1>
+        Person: <input type="text" id="txtPerson"><br>
+        Phone: <input type="text" id="txtPhone"><br>
+        <button id="btnCreateContact">Create</button>
+    </div>
+
+    <script>
+      $(function () {
+          $('#btnLoad').click(loadContacts);
+          $('#btnCreateContact').click(createContact);
+
+          const baceUrl = "https://phone-book-c048c.firebaseio.com/phonebook";
+          
+         function loadContacts() {
+             $("phonebook").empty();
+             $.get(baceUrl + ".json")
+                     .then(displaycontacts)
+                     .catch(displayError);
+         }
+
+         function displayError() {
+             $('#phonebook').html('<li>Eror !!!</li>');
+         }
+
+          function displaycontacts(contacts) {
+              let keys = Object.keys(contacts);
+              for(let key of keys){
+                  let contact = contacts[key];
+                  if(contact.person){
+                      let li = $('<li>');
+                      li.text( contact.person + ":" + contact.phone + " ");
+                      li.appendTo($('#phonebook'));
+                      li.append(
+                              $('<a href="#">[Delete]</a>').click(function () {
+                                  deleteContact(key);
+                              })
+                      );
+                  }
+              }
+          }
+
+         function deleteContact(key) {
+             let delRequest = {
+                 method: "DELETE",
+                 url: baceUrl + "/" + key + ".json"
+             };
+             $.ajax(delRequest)
+                     .then(loadContacts)// refresh contacts
+                     .catch (displayError);
+         }
+
+         function createContact() {
+            let person = $('#txtPerson').val();
+            let phone = $('#txtPhone').val();
+             let newContact = {person, phone };
+
+             let createRequest = {
+                 method: "POST",
+                 url: baceUrl + ".json",
+                 dataType: "JSON",
+                 data: JSON.stringify(newContact)
+             };
+             $.ajax(createRequest)
+                     .then(loadContacts)// refresh contacts
+                     .catch (displayError);
+         }
+      })
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

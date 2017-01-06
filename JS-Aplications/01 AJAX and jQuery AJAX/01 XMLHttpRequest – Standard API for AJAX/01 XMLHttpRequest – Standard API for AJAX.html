@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <button onclick="load()">Load</button> // when is press button load is invoke function load()                       00
+<div id="res"></div>
+
+    <script>
+        function load() {                                                                                             //04
+            let req = new XMLHttpRequest();
+            req.onreadystatechange = function () { // here recieve result of the request link
+                if(this.readyState == 4 && this.status == 200){ // check whether we save success result of the request
+                    document.getElementById('res').textContent = this.responseText;// if result is corect we append
+                }                        // result in to the body div 'result'
+            };
+            req.open("GET", // .open defact is prepare request link for searching                                       01
+                    "https://api.github.com/users/testnakov/repos", true);                                            //02
+            req.send() // execute same request
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

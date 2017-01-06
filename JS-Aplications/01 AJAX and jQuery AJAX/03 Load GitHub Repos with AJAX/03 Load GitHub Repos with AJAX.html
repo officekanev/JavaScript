@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example 2</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+
+    <div id="text">
+        <h1>Welcome</h1>
+        GitHub username: <input type="text" id="txtUsername">
+        <button onclick="load()">Load</button>
+        <ul id="results"></ul>
+    </div>
+
+    <!--<script>-->
+        <!--function load() {               //                                                                     var 1-->
+            <!--$('#results').empty(); // clear <ul id="results" for consisting old results of another requests-->
+            <!--let username = $("#txtUsername").val();-->
+            <!--$.get('https://api.github.com/users/' + username + '/repos')-->
+                    <!--.then(function (data) {-->
+                        <!--// console.dir(data);-->
+                        <!--for(let repos of data){-->
+                            <!--//$('#results').append($('<li>')).text(data);-->
+
+                            <!--let link = ($('<a>')-->
+                                    <!--.text(repos.full_name)-->
+                                    <!--.attr('href', repos.html_url));-->
+
+                            <!--let li = $('<li>').append(link);-->
+
+                            <!--$('#results').append(li);-->
+
+                            <!--// $('#results').append($('<li>').text(repos.full_name));-->
+                        <!--}-->
+
+                    <!--})-->
+
+                    <!--.catch(function () {-->
+                        <!--$('#results').append($('<li>Eror !!!</li>'));-->
+                    <!--})-->
+        <!--}-->
+    <!--</script>-->
+
+
+    <script>
+        function load() {               //                                                                     var 2
+            $('#results').empty(); // clear <ul id="results" for consisting old results of another requests
+            let username = $("#txtUsername").val();
+            $.get('https://api.github.com/users/' + username + '/repos')
+                    .then(displayRepos)
+                    .catch(dislayError);
+
+                    function displayRepos(data) {
+                        for(let repos of data){
+                            let link = ($('<a>')
+                                    .text(repos.full_name)
+                                    .attr('href', repos.html_url));
+
+                            let li = $('<li>').append(link);
+                            $('#results').append(li);
+                        }
+                    }
+
+                    function dislayError() {
+                        $('#results').append($('<li>Eror !!!</li>'));
+                    }
+        }
+    </script>
+
+
+    ////    var 3
+
+
+    <!--GitHub username:                                            -->
+    <!--<input type="text" id="username" value="testnakov" />-->
+    <!--<button onclick="loadRepos()">Load Repos</button>-->
+    <!--<ul id="repos"></ul>-->
+
+
+
+    <!--<script> // defaulth decizion-->
+        <!--function loadRepos() {-->
+            <!--$("#repos").empty();-->
+            <!--let url = "https://api.github.com/users/" + $("#username").val() + "/repos";-->
+            <!--$.ajax({ url,-->
+                <!--success: displayRepos,-->
+                <!--error: displayError-->
+            <!--});-->
+
+            <!--function displayRepos(respos) {-->
+                <!--for (let repo of respos) {-->
+                    <!--let link = $('<a>').text(repo.full_name);-->
+                    <!--link.attr('href', repo.html_url);-->
+                    <!--$("#repos").append($('<li>').append(link));-->
+                <!--}-->
+            <!--}-->
+
+            <!--function displayError(err) {-->
+                <!--$("#repos").append($("<li>Error</li>"));-->
+            <!--}-->
+        <!--}-->
+
+    <!--</script>-->
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
